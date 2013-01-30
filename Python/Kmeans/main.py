@@ -38,12 +38,7 @@ testData = getClickData()
 
 #-----------------------------------------------------------------------START - Train the model
 sys.stdout.write("Training the model...")
-if initialization == "canopy":
-  initial_centroids = model.train_canopyClustering(testData, float(sys.argv[3]), float(sys.argv[4]))
-elif initialization == "kmeans++_canopy":
-  initial_centroids = model.train(testData, "kmeans++canopy")
-else:
-  initial_centroids = model.train(testData, initialization)
+initial_centroids = model.train(testData, initialization)
 print "complete!"
 #-----------------------------------------------------------------------START - Train the model
 
