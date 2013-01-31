@@ -82,34 +82,7 @@ for iteration in range(numIters):
   iterAvgScore.append(avgScore)
   iterAvgNetLength.append(avgLength)
   print "\tIteration: "+`iteration`+"\tAvg Score: " + `avgScore` + "\tAvg NetworkLength: " + `avgLength`
-  
-  #The following can be included to coevolve the inputs to force the networks to solve
-  #more inputs
-  """
-  #evolve inputs
-  inputList = [(sum([getAverageFitness([copy.deepcopy(inp)], network, maxNetworkLength) for network in population]), inp) for inp in inputs]
-  sumFit = float(sum([score for (score, inp) in inputList]))
-  inputList = [(1.0-score/sumFit, inp) for (score, inp) in inputList]
-  inputList.sort()
-  inputList.reverse()
-  tmpinputs = []
-  newinputs = []
-  for i in range(5):
-    newinputs.append(inputList[i][1])
-  while len(tmpinputs) < topToSaveInputs:
-    for (score, inp) in inputList:
-      if random.random() <= score:
-        tmpinputs.append(inp)
-  while len(newinputs) < sizeInputs:
-    if random.random() < chanceOfMutation:
-      newinputs.append([j+1 for j in shuffleList(range(numItemsToSort))])
-    else:
-      ind1 = random.randrange(0, topToSaveInputs)
-      ind2 = random.randrange(0, topToSaveInputs)
-      for newInd in crossoverInput(tmpinputs[ind1], tmpinputs[ind2]):
-        newinputs.append(newInd)
-  inputs = newinputs
-  """
+
 #-----------------------------------------------------------------------END - Perform learning
 
 print "...complete!"
